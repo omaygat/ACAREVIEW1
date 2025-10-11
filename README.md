@@ -1,152 +1,135 @@
+#  Revisor Automático de Escritura Académica
 
-# ACAREVIEW1 - Revisor Académico IA
-
-## Descripción del Proyecto
-
-ACAREVIEW1 es una aplicación web para *análisis de texto académico*, que incluye:
-
-- Resumen automático del texto.
-- Corrección ortográfica y de estilo.
-- Detección de citas (APA e IEEE).
-- Detección de plagio y comparación de textos.
-- Dashboard interactivo en *React* para el frontend y API en *Node.js/Express* para el backend.
+El **Revisor Automático de Escritura Académica** es una aplicación que analiza textos académicos para detectar errores ortográficos, sugerir mejoras de estilo y validar las referencias.  
+El proyecto está dividido en **frontend** (interfaz de usuario) y **backend** (procesamiento y lógica).
 
 ---
 
-## Estructura del Proyecto
+## 📁 Estructura del proyecto
 
-
-
-acareview1/
-├─ backend/
-│ ├─ src/
-│ │ ├─ controllers/
-│ │ ├─ services/
-│ │ └─ models/
-│ ├─ tests/
-│ │ ├─ controllers/
-│ │ ├─ services/
-│ │ └─ models/
-│ ├─ package.json
-│ └─ .env # No subir al repositorio
-├─ frontend/
-│ ├─ src/
-│ │ ├─ components/
-│ │ ├─ hooks/
-│ │ └─ App.jsx
-│ ├─ tests/
-│ │ └─ integration/
-│ └─ package.json
-└─ README.md
-
+```
+acareview/
+├── backend/        # API principal: validaciones, análisis de texto, conexión con base de datos
+├── frontend/       # Interfaz de usuario construida con React + TailwindCSS
+├── tests/          # Pruebas unitarias y de integración (Jest)
+├── README.md       # Documentación del proyecto
+└── .github/
+    └── workflows/
+        └── ci.yml  # Automatización CI/CD con GitHub Actions
+```
 
 ---
 
-## Instalación
+## ⚙️ Tecnologías principales
 
-### Requisitos Previos
+| Componente | Tecnología |
+|-------------|-------------|
+| **Frontend** | React + TailwindCSS |
+| **Backend** | Node.js + Express |
+| **Pruebas** | Jest |
+| **CI/CD** | GitHub Actions |
+| **Cobertura** | Jest + Codecov |
 
-- Node.js >= 18
-- npm >= 9
-- Docker y Docker Compose (opcional, para contenedores)
+---
 
-### Backend
+## 🚀 Instalación y ejecución
 
-1. Ir a la carpeta backend/:
+1. Clona el repositorio:
    ```bash
-   cd backend
+   git clone https://github.com/usuario/acareview.git
+   cd acareview
+   ```
 
+2. Instala dependencias:
+   ```bash
+   npm install
+   ```
 
-Instalar dependencias:
+3. Ejecuta el proyecto:
+   ```bash
+   npm run dev
+   ```
 
-npm install
+---
 
+## 🧪 Ejecución de pruebas
 
-Configurar variables de entorno creando un archivo .env con:
-
-PORT=4000
-MONGO_URI=<tu_mongo_uri>
-HF_TOKEN=<tu_huggingface_token>
-
-
-⚠ No subir este archivo al repositorio.
-
-Ejecutar servidor:
-
-npm run dev
-
-Frontend
-
-Ir a la carpeta frontend/:
-
-cd frontend
-
-
-Instalar dependencias:
-
-npm install
-
-
-Ejecutar aplicación:
-
-npm start
-
-Tests
-Backend
-
-Ejecutar tests y generar cobertura:
-
-cd backend
-npm test -- --coverage
-
-
-Cobertura mínima: 50% en controladores y servicios.
-
-Uso de mocks para bases de datos y servicios externos.
-
-Frontend
-
-Ejecutar tests de componentes e integración:
-
-cd frontend
+Para correr los tests localmente:
+```bash
 npm test
+```
 
+Las pruebas se ejecutan automáticamente con cada **push** o **pull request** gracias a **GitHub Actions**.
 
-Cobertura mínima: 50% en componentes y hooks.
+---
 
-Testing de interacción de usuario y mocking de APIs.
+## 🧰 CI/CD y Automatización
 
-Dockerización (Opcional)
+Este proyecto incluye un pipeline de **Integración Continua (CI)** que:
 
-Construir contenedores:
+- Ejecuta los tests automáticamente con cada commit.  
+- Reporta la **cobertura de código**.  
+- Muestra el estado de los tests en este README mediante **badges**.  
+- Realiza **checks automáticos en los pull requests**.
 
-docker-compose build
+---
 
+## 📊 Estado del Proyecto
 
-Ejecutar contenedores:
+![Build](https://github.com/usuario/acareview/actions/workflows/ci.yml/badge.svg)
+[![codecov](https://codecov.io/gh/usuario/acareview/branch/main/graph/badge.svg)](https://codecov.io/gh/usuario/acareview)
 
-docker-compose up
+---
 
+## 📄 Ejemplo de uso
 
-Ejecutar tests dentro del contenedor:
+En el frontend puedes ingresar un texto académico.  
+El sistema analiza el contenido y muestra:
 
-docker compose run backend npm test
-docker compose run frontend npm test
+- Errores ortográficos detectados.  
+- Recomendaciones de estilo.  
+- Verificación de citas y referencias.  
 
-Buenas Prácticas
+---
 
-Se sigue la metodología TDD: ciclo rojo-verde-refactor.
+## 💡 Organización del código
 
-GitHub Actions ejecuta tests automáticamente en cada push y PR.
+- **`backend/`** → Controladores, rutas y validadores.  
+- **`frontend/`** → Componentes de interfaz, vistas y lógica de interacción.  
+- **`tests/`** → Archivos `.test.js` con pruebas unitarias y de integración.  
 
-Cobertura de tests reportada en PRs.
+Cada módulo está diseñado siguiendo el principio de **separación de responsabilidades** (*Separation of Concerns*), lo que facilita el mantenimiento y la escalabilidad del proyecto.
 
-Contribución
+---
 
-Hacer fork del repositorio.
+## 🧩 Archivos importantes
 
-Crear branch con la funcionalidad: git checkout -b feature/nueva-funcionalidad.
+### `.github/workflows/ci.yml`
+Ejemplo básico del pipeline de CI/CD:
+```yaml
+name: Node.js CI
 
-Hacer commits claros siguiendo TDD.
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-Abrir Pull Request para revisión.
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm test -- --coverage
+```
+
+---
+
+## 📝 Licencia
+
+Este proyecto está bajo la licencia **MIT**.
