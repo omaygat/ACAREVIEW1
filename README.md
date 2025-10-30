@@ -142,10 +142,26 @@ Un puntaje de **63** indica una **usabilidad moderada**, ligeramente por debajo 
 > **Mejorar las preguntas a nivel de todo tipo de usuario**, buscando un lenguaje más claro, inclusivo y comprensible, que facilite la interacción sin importar el nivel de conocimiento técnico del evaluador.
 
 ---
----
----
+## 🧠 Evaluación de Usabilidad según Nielsen
 
+La **Evaluación de Usabilidad basada en las Heurísticas de Nielsen** se centró en analizar la interfaz y la experiencia del usuario bajo los **10 principios heurísticos** propuestos por Jakob Nielsen.
+
+### 🔍 Objetivo
+Identificar problemas de usabilidad en el sistema y proponer mejoras que optimicen la interacción usuario–interfaz.
+
+### 🧾 Resultados
+El análisis se realizó considerando aspectos como **visibilidad del estado del sistema**, **control y libertad del usuario**, **consistencia**, **prevención de errores**, entre otros.
+
+📁 *Archivo fuente:* [`Evaluación de Usabilidad - Revisor Académico.csv`](./Evaluaci%C3%B3n%20de%20Usabilidad%20-%20Revisor%20Acad%C3%A9mico.csv)
+
+### 💡 Conclusión general
+> La evaluación mostró un **buen cumplimiento de los principios heurísticos**, pero se recomienda fortalecer la **retroalimentación visual y los mensajes de ayuda**, especialmente en etapas donde el usuario realiza correcciones o análisis más detallados.
+
+---
+---
+---
 ## 📝 Licencia
 
 Este proyecto está bajo la licencia **MIT**.
+
 
