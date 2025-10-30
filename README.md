@@ -140,6 +140,8 @@ Un puntaje de **63** indica una **usabilidad moderada**, ligeramente por debajo 
 
 ### 💡 Recomendación
 > **Mejorar las preguntas a nivel de todo tipo de usuario**, buscando un lenguaje más claro, inclusivo y comprensible, que facilite la interacción sin importar el nivel de conocimiento técnico del evaluador.
+📁 *Archivo fuente:* [`Evaluación de Usabilidad - Revisor Académico.csv`](https://drive.google.com/file/d/16p3Altjp-7FwlvOwvJn33B_79qZk5G2w/view?usp=drive_link)
+
 
 ---
 ## 🧠 Evaluación de Usabilidad según Nielsen
@@ -152,7 +154,7 @@ Identificar problemas de usabilidad en el sistema y proponer mejoras que optimic
 ### 🧾 Resultados
 El análisis se realizó considerando aspectos como **visibilidad del estado del sistema**, **control y libertad del usuario**, **consistencia**, **prevención de errores**, entre otros.
 
-📁 *Archivo fuente:* [`Evaluación de Usabilidad - Revisor Académico.csv`](./Evaluaci%C3%B3n%20de%20Usabilidad%20-%20Revisor%20Acad%C3%A9mico.csv)
+📁 *Archivo fuente:* [`Evaluación de Usabilidad - Revisor Académico.csv`](https://drive.google.com/file/d/1Ry_TNSTIg5i49Ath7eS29GuZf2HnWByc/view?usp=drive_link)
 
 ### 💡 Conclusión general
 > La evaluación mostró un **buen cumplimiento de los principios heurísticos**, pero se recomienda fortalecer la **retroalimentación visual y los mensajes de ayuda**, especialmente en etapas donde el usuario realiza correcciones o análisis más detallados.
@@ -163,5 +165,6 @@ El análisis se realizó considerando aspectos como **visibilidad del estado del
 ## 📝 Licencia
 
 Este proyecto está bajo la licencia **MIT**.
+
 
 
