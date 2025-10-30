@@ -127,9 +127,25 @@ jobs:
       - run: npm install
       - run: npm test -- --coverage
 ```
+## 🧭 System Usability Scale (SUS)
 
+El **System Usability Scale (SUS)** es un método estandarizado que permite evaluar la facilidad de uso percibida por los usuarios respecto al sistema **Revisor Automático de Escritura Académica**.
+
+| Indicador | Resultado |
+|------------|------------|
+| **Puntaje promedio SUS** | **63 / 100** |
+
+### 📊 Interpretación del resultado
+Un puntaje de **63** indica una **usabilidad moderada**, ligeramente por debajo del promedio (68), lo que sugiere que el sistema es **funcional**, pero **requiere mejoras en la experiencia de usuario** para alcanzar un nivel de usabilidad superior.
+
+### 💡 Recomendación
+> **Mejorar las preguntas a nivel de todo tipo de usuario**, buscando un lenguaje más claro, inclusivo y comprensible, que facilite la interacción sin importar el nivel de conocimiento técnico del evaluador.
+
+---
+---
 ---
 
 ## 📝 Licencia
 
 Este proyecto está bajo la licencia **MIT**.
+
