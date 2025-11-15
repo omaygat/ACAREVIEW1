@@ -159,12 +159,21 @@ El análisis se realizó considerando aspectos como **visibilidad del estado del
 ### 💡 Conclusión general
 > La evaluación mostró un **buen cumplimiento de los principios heurísticos**, pero se recomienda fortalecer la **retroalimentación visual y los mensajes de ayuda**, especialmente en etapas donde el usuario realiza correcciones o análisis más detallados.
 
+
+---
+## 🌱 Reporte de Optimización Verde
+
+Se realizó una optimización del proyecto MERN **ACAREVIEW1** aplicando principios de software verde, con el objetivo de mejorar el rendimiento y reducir el consumo energético. Las mejoras incluyeron implementación de caché, compresión Gzip/Brotli y reducción del bundle del frontend, lo que permitió disminuir tiempos de carga, peso de recursos y uso de CPU, logrando un impacto energético estimado entre el 30% y 50%. Este proceso fortaleció la eficiencia del sistema y mejoró la experiencia del usuario, dejando bases claras para futuras optimizaciones.
+
+📁  *Archivo fuente:* [`Evaluación de Usabilidad - Revisor Académico.csv`](https://docs.google.com/document/d/1NpgXUdQWBHxNobmcIXk87MVb524Pcrmu/edit?usp=sharing&ouid=117015765734330788895&rtpof=true&sd=true)
+
 ---
 ---
 ---
 ## 📝 Licencia
 
 Este proyecto está bajo la licencia **MIT**.
+
 
 
 
