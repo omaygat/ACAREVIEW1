@@ -1,0 +1,12 @@
+# Node
+node_modules/
+dist/
+build/
+
+# Configuración sensible
+.env
+.env.local
+.env.*.local
+
+# Archivos de sistema
+.DS_Store

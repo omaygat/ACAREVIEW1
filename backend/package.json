@@ -2,6 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "dev": "nodemon src/server.js",
     "test": "jest --coverage",
@@ -31,14 +34,9 @@
     },
     "collectCoverage": true,
     "coverageDirectory": "coverage",
-    "coverageReporters": [
-      "text",
-      "lcov"
-    ]
+    "coverageReporters": ["text", "lcov"]
   },
   "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
+    "presets": ["@babel/preset-env"]
   }
 }

@@ -36,27 +36,24 @@ function App() {
     setResult(null);
     setSimilarityData(null);
 
-    let textToSend = text;
-    if (file) {
-      try {
-        textToSend = await readFileAsText(file);
-      } catch {
-        setError("Error leyendo el archivo");
-        setLoading(false);
-        return;
-      }
-    }
-
-    if (!textToSend) {
+    if (!text && !file) {
       setError("Ingrese texto o seleccione un archivo");
       setLoading(false);
       return;
     }
 
     try {
-      const response = await axios.post("http://localhost:4000/api/analyze", {
-        text: textToSend,
+      const formData = new FormData();
+      if (file) {
+        formData.append("file", file);
+      } else {
+        formData.append("text", text);
+      }
+
+      const response = await axios.post("http://localhost:4000/api/analyze", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
+
       setResult(response.data);
     } catch (err) {
       console.error(err);
