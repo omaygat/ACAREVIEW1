@@ -10,3 +10,82 @@ build/
 
 # Archivos de sistema
 .DS_Store
+
+# MEAN + React + VSCode ignorables
+tmp/
+app/**/*.js
+app/**/*.js.map
+bower_components/
+.idea/
+.sass-cache/
+connect.lock/
+coverage/
+libpeerconnection.log/
+npm-debug.log
+testem.log
+typings/
+.angular/
+e2e/*.js
+e2e/*.map
+
+# Logs
+logs
+*.log
+
+# Diagnostic reports
+report.*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Jest
+.nyc_output
+.rpt2_cache/
+
+# Optional caches
+.npm
+.eslintcache
+.stylelintcache
+
+# Build / Output
+dist/
+build/
+.next
+out
+.nuxt
+.vuepress/dist
+.temp
+.docusaurus
+
+# Serverless
+.serverless/
+
+# Yarn
+.yarn/
+.pnp.*
+
+# VisualStudioCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+.history/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
