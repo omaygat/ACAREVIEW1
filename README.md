@@ -168,11 +168,16 @@ Se realizó una optimización del proyecto MERN **ACAREVIEW1** aplicando princip
 📁  *Archivo fuente:* [`Evaluación de Usabilidad - Revisor Académico.csv`](https://docs.google.com/document/d/1NpgXUdQWBHxNobmcIXk87MVb524Pcrmu/edit?usp=sharing&ouid=117015765734330788895&rtpof=true&sd=true)
 
 ---
+## Informe Final
+📁  *Archivo fuente:* [`Informe Final.doc`](https://docs.google.com/document/d/1xzb675KtvSQTUvpx-qYxwiAyhHHaJ-jp/edit?usp=sharing&ouid=117015765734330788895&rtpof=true&sd=true)
+
+---
 ---
 ---
 ## 📝 Licencia
 
 Este proyecto está bajo la licencia **MIT**.
+
 
 
 
