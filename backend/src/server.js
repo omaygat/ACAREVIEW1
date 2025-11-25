@@ -10,6 +10,7 @@ import mammoth from "mammoth";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const pdfParse = require("pdf-parse");
+import { sendToN8N } from "./controllers/n8nController.js";
 
 dotenv.config();
 const app = express();
@@ -22,6 +23,9 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 const upload = multer({ dest: "uploads/", limits: { fileSize: 50 * 1024 * 1024 } }); // 50 MB
+
+// 💥 PRIMERO EL WEBHOOK PARA EVITAR CONFLICTOS
+app.post("/api/analyze/send-n8n", sendToN8N);
 
 // 🚀 Ruta de análisis (acepta texto o archivo)
 app.post("/api/analyze", upload.single("file"), async (req, res) => {
