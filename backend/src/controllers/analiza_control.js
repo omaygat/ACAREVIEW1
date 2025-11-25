@@ -1,5 +1,20 @@
 import axios from "axios";
-import { enviarResultadosAN8N } from "../services/n8nService.js";
+
+const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || "https://viane.app.n8n.cloud/webhook/analizar-texto";
+
+export async function enviarResultadosAN8N(payload) {
+  try {
+    const resp = await axios.post(N8N_WEBHOOK_URL, payload, {
+      headers: { "Content-Type": "application/json" },
+      timeout: 10000,
+    });
+    return resp.data;
+  } catch (err) {
+    console.error("n8nService enviarResultadosAN8N error:", err?.response?.data || err?.message || err);
+    // No lanzar para no romper el flujo; devuelve null para indicar fallo
+    return null;
+  }
+}
 
 // Config HF router
 const HF_URL = "https://router.huggingface.co/hf-inference/models/facebook/bart-large-cnn";
