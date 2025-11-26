@@ -169,7 +169,7 @@ Se realizó una optimización del proyecto MERN **ACAREVIEW1** aplicando princip
 
 ---
 ## Informe Final
-📁  *Archivo fuente:* [`Informe Final.doc`](https://docs.google.com/document/d/1xzb675KtvSQTUvpx-qYxwiAyhHHaJ-jp/edit?usp=sharing&ouid=117015765734330788895&rtpof=true&sd=true)
+📁  *Archivo fuente:* [`Informe Final.doc`](https://docs.google.com/document/d/1QD5cRltbz8R_WEf8-ijS9TTpf8dtNLON/edit?usp=sharing&ouid=117015765734330788895&rtpof=true&sd=true)
 
 ---
 ---
@@ -177,6 +177,7 @@ Se realizó una optimización del proyecto MERN **ACAREVIEW1** aplicando princip
 ## 📝 Licencia
 
 Este proyecto está bajo la licencia **MIT**.
+
 
 
 
