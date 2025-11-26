@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || "https://viane.app.n8n.cloud/webhook/analizar-texto";
+const N8N_WEBHOOK_URL = "https://viane.app.n8n.cloud/webhook-test/analizar-texto";
+
 
 export async function enviarResultadosAN8N(payload) {
   try {
@@ -10,8 +11,7 @@ export async function enviarResultadosAN8N(payload) {
     });
     return resp.data;
   } catch (err) {
-    console.error("n8nService enviarResultadosAN8N error:", err?.response?.data || err?.message || err);
-    // No lanzar para no romper el flujo; devuelve null para indicar fallo
+    console.error("Error enviando a n8n:", err?.response?.data || err?.message || err);
     return null;
   }
 }
