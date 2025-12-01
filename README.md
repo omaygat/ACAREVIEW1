@@ -174,13 +174,15 @@ Se realizó una optimización del proyecto MERN **ACAREVIEW1** aplicando princip
 
 ---
 ## Video Final
-▶️ *Archivo fuente:* [`Video Final.mp4`]([https://docs.google.com/document/d/1QD5cRltbz8R_WEf8-ijS9TTpf8dtNLON/edit?usp=sharing&ouid=117015765734330788895&rtpof=true&sd=true](https://drive.google.com/drive/folders/1XNnnvdlvzgim8Bmn6Q1zJRQEIzksG9Jj?usp=drive_link))
+▶️  *Archivo fuente:* [`Video Final.mp4`](https://drive.google.com/file/d/1yI7IdFdNGAxCNnh0YCRrjCP87CS031JC/view?usp=sharing)
+
 ---
 ---
 ---
 ## 📝 Licencia
 
 Este proyecto está bajo la licencia **MIT**.
+
 
 
 
