@@ -16,7 +16,6 @@ export default function Login() {
 
       alert(`Bienvenido ${data.user.name} ${data.user.lastName}`);
 
-      // Redirigir según el rol
       if (data.user.role === "estudiante") navigate("/student");
       else if (data.user.role === "docente") navigate("/teacher");
       else navigate("/");
@@ -26,36 +25,73 @@ export default function Login() {
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Login</h1>
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center px-4">
 
-      <input
-        placeholder="Correo"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-      />
+      <div className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-md">
 
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
+        <h1 className="text-3xl font-bold text-gray-900 text-center mb-6">
+          Iniciar Sesión
+        </h1>
 
-      <div style={{ marginTop: "1rem" }}>
-        <button onClick={handleLogin}>Ingresar</button>
+        {/* INPUT EMAIL */}
+        <div className="mb-4">
+          <label className="text-gray-700 font-medium">Correo</label>
+          <input
+            type="email"
+            placeholder="Ingresa tu correo"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            className="w-full mt-1 px-4 py-3 border border-gray-300 rounded-xl 
+                       focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+        </div>
 
-        {/* Ahora sí funciona */}
-        <button onClick={() => navigate("/")} style={{ marginLeft: "0.5rem" }}>
-          Volver
-        </button>
-      </div>
+        {/* INPUT PASSWORD */}
+        <div className="mb-6">
+          <label className="text-gray-700 font-medium">Contraseña</label>
+          <input
+            type="password"
+            placeholder="Ingresa tu contraseña"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            className="w-full mt-1 px-4 py-3 border border-gray-300 rounded-xl 
+                       focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+        </div>
 
-      <div style={{ marginTop: "1rem" }}>
-        <span>¿No tienes cuenta? </span>
+        {/* BOTONES */}
+        <div className="flex flex-col gap-4">
+          <button
+            onClick={handleLogin}
+            className="w-full bg-blue-600 text-white py-3 rounded-full font-semibold text-lg 
+                       hover:bg-blue-700 transition-all shadow-md"
+          >
+            Ingresar
+          </button>
 
-        {/* Ahora sí funciona */}
-        <button onClick={() => navigate("/register")}>Registrarse</button>
+          <button
+            onClick={() => navigate("/")}
+            className="w-full bg-gray-200 text-gray-900 py-3 rounded-full font-semibold text-lg 
+                       hover:bg-gray-300 transition-all"
+          >
+            Volver
+          </button>
+        </div>
+
+        {/* REGISTRO */}
+        <div className="text-center mt-6">
+          <p className="text-gray-600">
+            ¿No tienes cuenta?
+          </p>
+
+          <button
+            onClick={() => navigate("/register")}
+            className="mt-2 text-blue-600 font-semibold hover:underline"
+          >
+            Registrarse
+          </button>
+        </div>
+
       </div>
     </div>
   );

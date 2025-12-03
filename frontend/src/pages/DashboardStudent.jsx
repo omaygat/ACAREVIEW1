@@ -1,114 +1,130 @@
-import { Link } from "react-router-dom";
-import { Upload, FileText, BarChart3, Bell, CheckCircle } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Bell, FileText, BarChart3, CheckCircle, AlertTriangle, LogOut } from "lucide-react";
+import { Card, CardContent, CardTitle, CardHeader } from "../components/ui/card";
 
 export default function DashboardStudent() {
+  const navigate = useNavigate();
+
+  // Traemos los trabajos desde localStorage para mostrar el total
+  const trabajos = JSON.parse(localStorage.getItem("analisis")) || [];
+  const totalTextos = trabajos.filter(t => t.tipo === "Texto").length;
+  const totalArchivos = trabajos.filter(t => t.tipo === "Archivo").length;
+
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen flex bg-gray-50">
+      {/* SIDEBAR */}
+      <aside className="w-72 bg-green-700 text-white p-6 hidden md:flex flex-col shadow-xl">
+        <h2 className="text-3xl font-bold mb-10 tracking-tight">ACAREVIEW</h2>
 
-      {/* Título */}
-      <h1 className="text-3xl font-bold mb-6 text-gray-800">
-        Dashboard del Estudiante
-      </h1>
+        <nav className="flex flex-col gap-4 text-lg font-medium">
+          <Link className="hover:text-yellow-300 transition" to="/student">📊 Dashboard</Link>
+          <Link className="hover:text-yellow-300 transition" to="/analizador">📄 Analizar Trabajo</Link>
+          <Link className="hover:text-yellow-300 transition" to="/student/historial">📚 Historial</Link>
+          <Link className="hover:text-yellow-300 transition" to="/student/notificaciones">🔔 Notificaciones</Link>
+          <Link className="hover:text-yellow-300 transition" to="/perfil">👤 Perfil</Link>
+        </nav>
+      </aside>
 
-      {/* Tarjetas principales */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-
-        {/* Subir trabajo */}
-        <div className="bg-white shadow-md rounded-xl p-5 hover:shadow-xl transition cursor-pointer">
-          <div className="flex items-center gap-2 text-blue-600 text-xl font-semibold mb-2">
-            <Upload /> Analizar Nuevo Trabajo
+      {/* MAIN */}
+      <main className="flex-1 p-10">
+        {/* HEADER */}
+        <div className="flex justify-between items-center mb-10">
+          <div>
+            <h1 className="text-4xl font-extrabold text-gray-800">Dashboard</h1>
+            <p className="text-gray-500 mt-1">Resumen general del estudiante</p>
           </div>
-          <p className="text-gray-600 mb-4">
-            Sube tu documento para analizar plagio, ortografía y formato APA.
-          </p>
-          <Link to="/analizador">
-            <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
-              Subir y analizar
-            </button>
-          </Link>
-        </div>
 
-        {/* Historial */}
-        <div className="bg-white shadow-md rounded-xl p-5 hover:shadow-xl transition cursor-pointer">
-          <div className="flex items-center gap-2 text-green-600 text-xl font-semibold mb-2">
-            <FileText /> Historial de Trabajos
+          <div className="flex items-center gap-5">
+            <button
+              onClick={() => navigate("/login")}
+              className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-md transition"
+            >
+              <LogOut size={20} />
+              Volver al Inicio
+            </button>
+            <Bell className="text-gray-600 cursor-pointer hover:text-gray-800 transition" size={26} />
+            <img
+              src="https://i.pravatar.cc/50"
+              alt="user"
+              className="rounded-full w-12 h-12 border-2 border-gray-300"
+            />
           </div>
-          <p className="text-gray-600 mb-4">
-            Revisa tus análisis y reportes anteriores.
-          </p>
-          <Link to="/estudiante/historial">
-            <button className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
-              Ver historial
-            </button>
-          </Link>
         </div>
 
-        {/* Notificaciones */}
-        <div className="bg-white shadow-md rounded-xl p-5 hover:shadow-xl transition cursor-pointer">
-          <div className="flex items-center gap-2 text-yellow-600 text-xl font-semibold mb-2">
-            <Bell /> Notificaciones
-          </div>
-          <p className="text-gray-600 mb-4">
-            Mensajes y observaciones del docente.
-          </p>
-          <Link to="/estudiante/notificaciones">
-            <button className="w-full bg-yellow-600 text-white py-2 rounded-lg hover:bg-yellow-700">
-              Ver notificaciones
-            </button>
-          </Link>
-        </div>
-      </div>
+        {/* MÉTRICAS */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+          <Card
+            className="shadow-lg border-l-4 border-blue-500 cursor-pointer hover:shadow-xl transition"
+            onClick={() => navigate("/student/analizados")}
+          >
+            <CardHeader className="flex items-center gap-2">
+              <FileText className="text-blue-500" />
+              <CardTitle className="text-gray-700">Trabajos Analizados</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-4xl font-bold">{trabajos.length}</p>
+              <span className="text-blue-600 text-sm">{totalTextos} textos / {totalArchivos} archivos</span>
+            </CardContent>
+          </Card>
 
-      {/* Gráficas */}
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">Tu progreso</h2>
+          <Card className="shadow-lg border-l-4 border-green-500 cursor-pointer hover:shadow-xl transition">
+            <CardHeader className="flex items-center gap-2">
+              <BarChart3 className="text-green-500" />
+              <CardTitle className="text-gray-700">Promedio General</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-4xl font-bold">85%</p>
+              <span className="text-green-600 text-sm">Últimos 30 días</span>
+            </CardContent>
+          </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className="shadow-lg border-l-4 border-red-500 cursor-pointer hover:shadow-xl transition">
+            <CardHeader className="flex items-center gap-2">
+              <AlertTriangle className="text-red-500" />
+              <CardTitle className="text-gray-700">Errores Detectados</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-4xl font-bold">27</p>
+              <span className="text-red-600 text-sm">Este mes</span>
+            </CardContent>
+          </Card>
 
-        {/* Gráfica de rendimiento */}
-        <div className="bg-white shadow-md rounded-xl p-5">
-          <h3 className="text-lg font-semibold mb-2">Mejora por semanas</h3>
-          <img
-            className="rounded-lg"
-            alt="grafica"
-            src="https://quickchart.io/chart?c={type:'line',data:{labels:['Semana 1','Semana 2','Semana 3','Semana 4'],datasets:[{label:'Puntaje general',data:[50,65,72,85]}]}}"
-          />
-        </div>
-
-        {/* Errores comunes */}
-        <div className="bg-white shadow-md rounded-xl p-5">
-          <h3 className="text-lg font-semibold mb-2">Errores más detectados</h3>
-          <img
-            className="rounded-lg"
-            alt="grafica"
-            src="https://quickchart.io/chart?c={type:'bar',data:{labels:['APA','Ortografía','Coherencia','Plagio'],datasets:[{label:'Frecuencia',data:[5,12,7,2]}]}}"
-          />
-        </div>
-      </div>
-
-      {/* Estado de tareas */}
-      <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-800">Estado de tus trabajos</h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-        <div className="bg-white shadow-md p-5 rounded-xl text-center">
-          <CheckCircle className="text-green-600 mx-auto mb-2" size={40} />
-          <h3 className="font-semibold text-xl text-green-700">Finalizados</h3>
-          <p className="text-gray-600 mt-2 text-lg">12 trabajos</p>
+          <Card className="shadow-lg border-l-4 border-purple-500 cursor-pointer hover:shadow-xl transition">
+            <CardHeader className="flex items-center gap-2">
+              <CheckCircle className="text-purple-500" />
+              <CardTitle className="text-gray-700">Correcciones Realizadas</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-4xl font-bold">18</p>
+              <span className="text-purple-600 text-sm">Última semana</span>
+            </CardContent>
+          </Card>
         </div>
 
-        <div className="bg-white shadow-md p-5 rounded-xl text-center">
-          <CheckCircle className="text-blue-600 mx-auto mb-2 rotate-90" size={40} />
-          <h3 className="font-semibold text-xl text-blue-700">En progreso</h3>
-          <p className="text-gray-600 mt-2 text-lg">3 trabajos</p>
-        </div>
+        {/* GRÁFICAS */}
+        <h2 className="text-xl font-bold mb-3 text-gray-700">Evolución de Puntajes</h2>
+        <Card className="shadow-lg mb-10">
+          <CardContent>
+            <img
+              className="rounded-lg"
+              alt="grafica"
+              src="https://quickchart.io/chart?c={type:'line',data:{labels:['Semana 1','Semana 2','Semana 3','Semana 4'],datasets:[{label:'Puntaje general',data:[50,65,72,85]}]}}"
+            />
+          </CardContent>
+        </Card>
 
-        <div className="bg-white shadow-md p-5 rounded-xl text-center">
-          <CheckCircle className="text-yellow-500 mx-auto mb-2 -rotate-45" size={40} />
-          <h3 className="font-semibold text-xl text-yellow-600">Pendientes</h3>
-          <p className="text-gray-600 mt-2 text-lg">2 trabajos</p>
-        </div>
+        <h2 className="text-xl font-bold mb-3 text-gray-700">Errores más comunes</h2>
+        <Card className="shadow-lg">
+          <CardContent>
+            <img
+              className="rounded-lg"
+              alt="grafica"
+              src="https://quickchart.io/chart?c={type:'bar',data:{labels:['APA','Ortografía','Coherencia','Plagio'],datasets:[{label:'Frecuencia',data:[12,18,9,3]}]}}"
+            />
+          </CardContent>
+        </Card>
 
-      </div>
+      </main>
     </div>
   );
 }

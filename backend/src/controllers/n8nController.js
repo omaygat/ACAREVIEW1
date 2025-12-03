@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const sendToN8N = async (req, res) => {
   try {
-    const { text } = req.body;
+    const { text, resumenIA, correccionIA, analisisIA, citasDetectadas } = req.body;
 
     if (!text) {
       return res.status(400).json({ error: "Texto requerido" });
@@ -14,7 +14,13 @@ export const sendToN8N = async (req, res) => {
       return res.status(500).json({ error: "Webhook de n8n no configurado" });
     }
 
-    const response = await axios.post(webhookUrl, { text });
+    const response = await axios.post(webhookUrl, { 
+      text,
+      resumenIA,
+      correccionIA,
+      analisisIA,
+      citasDetectadas
+    });
 
     return res.json({
       ok: true,
@@ -26,4 +32,4 @@ export const sendToN8N = async (req, res) => {
     console.error("❌ Error enviando a n8n:", error.message);
     return res.status(500).json({ error: "Error enviando a n8n" });
   }
-};
+};  

@@ -5,12 +5,12 @@ dotenv.config();
 
 const HF_TOKEN = process.env.HUGGINGFACE_API_KEY;
 
-// 🔹 Nuevo endpoint obligatorio de Hugging Face
+// Nuevo endpoint del router
 const HF_BASE = "https://router.huggingface.co/hf-inference/models/";
 
 export const analyzeTextService = async (text) => {
   try {
-    // 🔹 Resumen usando el modelo (nuevo endpoint)
+    // --- RESUMEN ---
     const summaryResp = await axios.post(
       `${HF_BASE}facebook/bart-large-cnn`,
       { inputs: text },
@@ -27,25 +27,30 @@ export const analyzeTextService = async (text) => {
       summaryResp.data[0]?.summary_text ||
       text.slice(0, 200) + "...";
 
-    // 🔹 Citas APA/IEEE
+    // --- CITAS APA / IEEE ---
     const citasAPA = text.match(/\([A-Za-z]+, \d{4}\)/g) || [];
     const citasIEEE = text.match(/\[\d+\]/g) || [];
 
-    // 🔹 Corrección de ortografía (solo placeholder)
-    const spellCheckResp = await axios.post(
-      `${HF_BASE}facebook/bart-large-mnli`,
-      { inputs: text },
+    // --- CORRECCIÓN DE ORTOGRAFÍA REAL ---
+    const spellingResp = await axios.post(
+      `${HF_BASE}pszemraj/flan-t5-large-grammar-synthesis`,
+      {
+        inputs: `fix grammar and spelling: ${text}`
+      },
       {
         headers: {
           Authorization: `Bearer ${HF_TOKEN}`,
           "Content-Type": "application/json",
-        },
+        }
       }
     );
 
-    const ortografia = "Revisión automática disponible (pendiente integración completa)";
+    const ortografia =
+      spellingResp.data?.generated_text ||
+      spellingResp.data[0]?.generated_text ||
+      "No se pudo corregir";
 
-    // 🔹 Plagio (simulación)
+    // --- PLAGIO (simulado por ahora) ---
     const plagio = "Simulación: sin coincidencias detectadas";
 
     return {

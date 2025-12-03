@@ -23,14 +23,9 @@ export default function Register() {
 
       alert("Usuario registrado correctamente");
 
-      // 🔥 Redirección específica según el rol
-      if (role === "estudiante") {
-        navigate("/analizador");  // AQUI TE MANDA DIRECTO AL ANALYZER
-      } else if (role === "docente") {
-        navigate("/teacher");
-      } else {
-        navigate("/");
-      }
+      if (role === "estudiante") navigate("/analizador");
+      else if (role === "docente") navigate("/teacher");
+      else navigate("/");
 
     } catch (e) {
       alert(e.response?.data.error || "Error registrando usuario");
@@ -38,45 +33,101 @@ export default function Register() {
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Registro</h1>
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center px-4">
 
-      <input
-        placeholder="Nombre"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <div className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-lg">
 
-      <input
-        placeholder="Apellidos"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-      />
+        <h1 className="text-3xl font-bold text-gray-900 text-center mb-6">
+          Crear Cuenta
+        </h1>
 
-      <input
-        placeholder="Correo"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        {/* Nombre */}
+        <div className="mb-4">
+          <label className="text-gray-700 font-medium">Nombre</label>
+          <input
+            type="text"
+            placeholder="Ingresa tu nombre"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full mt-1 px-4 py-3 border border-gray-300 rounded-xl 
+                       focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+        </div>
 
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        {/* Apellidos */}
+        <div className="mb-4">
+          <label className="text-gray-700 font-medium">Apellidos</label>
+          <input
+            type="text"
+            placeholder="Ingresa tus apellidos"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="w-full mt-1 px-4 py-3 border border-gray-300 rounded-xl 
+                       focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+        </div>
 
-      <select value={role} onChange={(e) => setRole(e.target.value)}>
-        <option value="estudiante">Estudiante</option>
-        <option value="docente">Docente</option>
-        <option value="admin">Admin</option>
-      </select>
+        {/* Correo */}
+        <div className="mb-4">
+          <label className="text-gray-700 font-medium">Correo</label>
+          <input
+            type="email"
+            placeholder="ejemplo@gmail.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full mt-1 px-4 py-3 border border-gray-300 rounded-xl 
+                       focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+        </div>
 
-      <button onClick={handleRegister}>Registrarse</button>
+        {/* Contraseña */}
+        <div className="mb-4">
+          <label className="text-gray-700 font-medium">Contraseña</label>
+          <input
+            type="password"
+            placeholder="Crea una contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full mt-1 px-4 py-3 border border-gray-300 rounded-xl 
+                       focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+        </div>
 
-      <button onClick={() => navigate("/login")} style={{ marginLeft: "0.5rem" }}>
-        Volver
-      </button>
+        {/* Rol */}
+        <div className="mb-6">
+          <label className="text-gray-700 font-medium">Rol</label>
+          <select
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className="w-full mt-1 px-4 py-3 border border-gray-300 rounded-xl
+                       bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          >
+            <option value="estudiante">Estudiante</option>
+            <option value="docente">Docente</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </div>
+
+        {/* Botones */}
+        <div className="flex flex-col gap-4">
+          <button
+            onClick={handleRegister}
+            className="w-full bg-blue-600 text-white py-3 rounded-full font-semibold text-lg 
+                       hover:bg-blue-700 transition-all shadow-md"
+          >
+            Registrarse
+          </button>
+
+          <button
+            onClick={() => navigate("/login")}
+            className="w-full bg-gray-200 text-gray-900 py-3 rounded-full font-semibold text-lg 
+                       hover:bg-gray-300 transition-all"
+          >
+            Volver
+          </button>
+        </div>
+
+      </div>
     </div>
   );
 }

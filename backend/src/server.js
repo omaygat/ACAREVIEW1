@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import analyzeRoutes from "./routes/analyzeRoutes.js";
 import authRoutes from "./routes/auth.js";
+import correctorRoutes from "./routes/correctorRoutes.js";
 import multer from "multer";
 import fs from "fs";
 import { analyzeText } from "./controllers/analiza_control.js";
@@ -20,21 +21,24 @@ const PORT = process.env.PORT || 4000;
 // ⭐ Conectar a MongoDB
 connectDB();
 
-// ⭐ Middleware PRINCIPAL — debe ir ANTES de las rutas
+// ⭐ Middleware
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
+// ⭐ Corrector ortográfico (solo una vez)
+app.use("/api/corrector", correctorRoutes);
+
 // ⭐ Rutas de autenticación
 app.use("/api/auth", authRoutes);
 
-// ⭐ Multer para subir archivos
+// ⭐ Multer para archivos
 const upload = multer({ dest: "uploads/", limits: { fileSize: 50 * 1024 * 1024 } });
 
 // ⭐ Webhook hacia n8n
 app.post("/api/analyze/send-n8n", sendToN8N);
 
-// ⭐ Ruta principal para análisis
+// ⭐ Ruta principal ANÁLISIS
 app.post("/api/analyze", upload.single("file"), async (req, res) => {
   try {
     let text = "";

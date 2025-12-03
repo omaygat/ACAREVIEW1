@@ -6,6 +6,9 @@ import DashboardStudent from "./pages/DashboardStudent";
 import DashboardTeacher from "./pages/DashboardTeacher";
 import UploadWork from "./pages/UploadWork";
 import Analyzer from "./pages/Analyzer";
+import Retroalimentacion from "./pages/Retroalimentacion";
+import DetalleTrabajos from "./pages/DetalleTrabajos";
+import Historial from "./pages/Historial"; // ← IMPORTAR AQUÍ
 
 function App() {
   return (
@@ -16,6 +19,7 @@ function App() {
         {/* Auth */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/student/historial" element={<Historial />} />
 
         {/* Dashboards */}
         <Route path="/student" element={<DashboardStudent />} />
@@ -26,6 +30,10 @@ function App() {
 
         {/* Analizador IA */}
         <Route path="/analizador" element={<Analyzer />} />
+
+        {/* Retroalimentación IA */}
+        <Route path="/retroalimentacion" element={<Retroalimentacion />} />
+        <Route path="/student/analizados" element={<DetalleTrabajos />} />
       </Routes>
     </BrowserRouter>
   );
